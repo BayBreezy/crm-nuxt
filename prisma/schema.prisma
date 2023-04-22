@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DB")
+}
+
+// User model 
+model User {
+  id Int @id @default(autoincrement())
+
+  email    String  @unique
+  password String
+  username String?
+
+  contacts Contact[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// Contact model for prospecting
+model Contact {
+  id Int @id @default(autoincrement())
+
+  firstName  String
+  lastName   String
+  email      String  @unique
+  phone      String?
+  company    String?
+  position   String?
+  address    String?
+  department String?
+
+  // Contact may have activity logs
+  acitivies ContactActivity[]
+
+  // Contact must belong to a user
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contacts")
+}
+
+// Contact activity log
+model ContactActivity {
+  id Int @id @default(autoincrement())
+
+  contactId Int
+  contact   Contact @relation(fields: [contactId], references: [id])
+
+  content String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contact-activities")
+}

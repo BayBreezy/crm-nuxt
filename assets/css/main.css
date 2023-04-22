@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full rounded-md border-gray-300 px-3 py-2.5 outline-none transition-colors placeholder:text-gray-300 hover:border-gray-400 focus:border-primary focus:ring-primary sm:text-sm;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply cursor-pointer border-gray-400 bg-transparent text-primary outline-none transition-colors focus:ring-primary;
+  }
+
+  [type="radio"] {
+    @apply rounded-full p-2.5;
+  }
+
+  [type="checkbox"] {
+    @apply rounded p-2.5;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium transition focus:outline-none active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 lg:py-2.5;
+  }
+  .btn-outline {
+    @apply border border-gray-300 bg-white shadow-sm  hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 focus:ring-offset-2;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-t from-primary-700 via-primary-600 to-primary-500 text-primary-50 shadow  duration-300 hover:from-primary-700 hover:to-primary-400 focus:ring-2 focus:ring-primary-200 focus:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply hover:bg-primary-50 hover:text-primary focus:ring-2 focus:ring-primary-100 focus:ring-offset-2;
+  }
+  .btn-icon {
+    @apply inline-flex items-center justify-center rounded-lg p-2.5 text-gray-500 transition hover:bg-primary-100 hover:text-primary focus:ring-2 focus:ring-primary-100 focus:ring-offset-2 active:scale-95;
+  }
+
+  /* Error input */
+  .input-error {
+    @apply border-red-500 transition focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:focus:border-red-500 dark:focus:ring-red-500;
+  }
+}
+
+/* Tooltip stiles */
+.v-popper__inner {
+  @apply text-xs;
+}
+
+/* Quill styles */
+.ql-toolbar.ql-snow {
+  @apply rounded-t-lg border;
+}
+.ql-editor {
+  @apply min-h-[150px]  font-sans text-sm;
+}
+.ql-container.ql-snow {
+  @apply rounded-b-lg border;
+}
+
+/* Page & layout transitions. This will fade and shrink on exit and fade in and grow on enter */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Menu slide out transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
