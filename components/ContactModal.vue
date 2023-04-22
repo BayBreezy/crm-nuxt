@@ -10,7 +10,7 @@
     overlay-transition="vfm-fade"
     overlay-class="bg-black/50 fixed inset-0 backdrop-blur"
     content-transition="slide">
-    <NuxtScrollbar class="h-screen w-full overflow-y-auto bg-white lg:w-[500px]">
+    <NuxtScrollbar class="h-screen w-screen overflow-y-auto bg-white lg:w-[500px]">
       <div class="sticky top-0 z-10 flex items-center justify-between border-b bg-white p-5">
         <p class="text-lg font-semibold">Create contact</p>
         <button

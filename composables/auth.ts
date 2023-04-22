@@ -58,6 +58,24 @@ export const useAuth = () => {
   };
 
   /**
+   * Method to logout a user
+   * @returns {Promise<boolean>} - The response from the API
+   * @example
+   * const { logoutUser } = useAuth()
+   * const response = await logoutUser()
+   * console.log(response)
+   */
+  const logoutUser = async () => {
+    try {
+      await $fetch("/api/auth/logout");
+      user.value = undefined;
+      return true;
+    } catch (error: any) {
+      throw error.data;
+    }
+  };
+
+  /**
    * Method to get the current user
    * @returns {Promise<User | undefined>} - The response from the API
    * @example
@@ -75,5 +93,5 @@ export const useAuth = () => {
     }
   };
 
-  return { register, login, getMe };
+  return { register, login, getMe, logoutUser };
 };

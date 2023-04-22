@@ -17,3 +17,9 @@ export const ContactSchema = object({
   address: string().nullable(),
   department: string().nullable(),
 });
+
+export const NoteSchema = object({
+  content: string()
+    .required("Note content is required")
+    .min(6, "Note must be at least 6 characters"),
+});

@@ -2,13 +2,21 @@
   <div class="mx-auto max-w-6xl p-5">
     <h1 class="text-3xl font-semibold">Contacts</h1>
     <div class="mt-7 flex items-center gap-5">
-      <button @click="exportContacts" class="btn btn-outline">
+      <button @click="exportContacts()" class="btn btn-outline">
         <Icon size="18" name="solar:cloud-download-line-duotone" /> Export All
       </button>
-      <button @click="contactModal = true; contactRef.open({})" class="btn btn-primary">Create New</button>
+      <button
+        @click="
+          contactModal = true;
+          contactRef.open({});
+        "
+        class="btn btn-primary">
+        Create New
+      </button>
     </div>
 
     <ContactModal ref="contactRef" @refresh="refreshContacts" v-model="contactModal" />
+    <NotesModal ref="notesRef" />
 
     <div class="mt-10">
       <DataTable
@@ -36,7 +44,11 @@
               <Icon size="20" name="solar:pen-new-square-line-duotone" />
             </button>
             <!-- Add note button -->
-            <button class="btn-icon p-1.5" v-tooltip="`Add note`" type="button">
+            <button
+              @click="notesRef?.open(item)"
+              class="btn-icon p-1.5"
+              v-tooltip="`Add note`"
+              type="button">
               <Icon size="20" name="solar:notebook-line-duotone" />
             </button>
             <!-- Delete button -->
@@ -74,11 +86,17 @@
 
 <script setup lang="ts">
   import { Contact } from "@prisma/client";
-  import type { Header } from "vue3-easy-data-table";
+  import { NotesModal } from "#components";
+
+  // Tell the page which layout to use
   definePageMeta({ layout: "admin" });
 
+  // Ref for contact modal
   const contactRef = ref();
+  // var used to open close the contact modal
   let contactModal = ref(false);
+  // Ref for notes modal
+  const notesRef = ref<InstanceType<typeof NotesModal>>();
 
   const {
     data: contacts,
@@ -88,86 +106,18 @@
     default: () => [],
   });
 
-  // table headers fro contact table
-  const headers: Header[] = [
-    { text: "Name", value: "name" },
-    { text: "Phone", value: "phone" , sortable: true},
-    { text: "Company", value: "company", sortable: true},
-    { text: "Position", value: "position", sortable: true },
-    { text: "Department", value: "department", sortable: true },
-    { text: "Address", value: "address" },
-    { text: "Actions", value: "actions" },
-  ];
+  const setEdit = (contact: Contact) => {
+    contactModal.value = true;
+    contactRef.value?.open(JSON.parse(JSON.stringify(contact)));
+  };
 
-  /**
-   * Method used to delete contact
-   * @param id contact id
-   */
+  // headers used in the datatable
+  const headers = useContactHeaders;
+  // function used to delete contact
   const deleteContact = async (id: string) => {
-    await useToast().promise(
-      $fetch(`/api/contacts/${id}`, {
-        method: "DELETE",
-      }),
-      {
-        error: {
-          autoClose: 12000,
-          closeButton: true,
-          render(err: any) {
-            return useFormatError(err);
-          },
-        },
-        pending: "Deleting contact...",
-        success: {
-          autoClose: 12000,
-          closeButton: true,
-          render() {
-            return "Contact deleted successfully";
-          },
-        },
-      }
-    );
+    await useDeleteContact(id);
     await refreshContacts();
   };
-
-const setEdit = (contact: Contact) => {
-  contactModal.value = true;
-  contactRef.value?.open(JSON.parse(JSON.stringify(contact)));
-  };
-
-  // Export all contacts
-  const exportContacts = async () => {
-    const data = await useToast().promise($fetch("/api/contacts/export"), {
-      error: {
-        autoClose: 12000,
-        closeButton: true,
-        render(err: any) {
-          return useFormatError(err);
-        },
-      },
-      pending: "Exporting contacts...",
-      success: {
-        autoClose: 12000,
-        closeButton: true,
-        render() {
-          return "Contacts exported successfully";
-        },
-      },
-    });
-    if (data) {
-      // download file from base64 string
-      const bytes = atob(data)
-        .split("")
-        .map((char) => char.charCodeAt(0));
-      const byteArray = new Uint8Array(bytes);
-      const blob = new Blob([byteArray], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "contacts.xlsx";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
+  // function used to export contacts
+  const exportContacts = useExportContacts;
 </script>

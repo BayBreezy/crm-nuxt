@@ -1,7 +1,7 @@
 <template>
   <main class="flex h-[100dvh] items-center justify-center">
-    <div class="p-5 lg:w-[400px]">
-      <h1 class="font-bold lg:text-4xl">Create account</h1>
+    <div class="w-screen p-5 md:w-[400px]">
+      <h1 class="text-2xl font-bold lg:text-4xl">Create account</h1>
       <p class="mt-5 text-gray-500 lg:text-xl">Enter your email & password</p>
       <form @submit="onSubmit" class="mt-10">
         <div>

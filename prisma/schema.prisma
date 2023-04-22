@@ -36,8 +36,8 @@ model Contact {
   address    String?
   department String?
 
-  // Contact may have activity logs
-  acitivies ContactActivity[]
+  // Contact may have notes
+  notes Notes[]
 
   // Contact must belong to a user
   userId Int
@@ -49,8 +49,8 @@ model Contact {
   @@map("contacts")
 }
 
-// Contact activity log
-model ContactActivity {
+// Contact notes log
+model Notes {
   id Int @id @default(autoincrement())
 
   contactId Int
@@ -61,5 +61,5 @@ model ContactActivity {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("contact-activities")
+  @@map("notes")
 }
