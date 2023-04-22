@@ -6,6 +6,10 @@ export default defineEventHandler(async (e) => {
   const id = Number(e.context?.params?.id);
   if (!id) throw createError({ statusCode: 400, message: "Bad Request" });
   try {
+    // delete notes related to the contact
+    await prisma.notes.deleteMany({
+      where: { contactId: id },
+    });
     // delete contact
     await prisma.contact.delete({
       where: { id },
