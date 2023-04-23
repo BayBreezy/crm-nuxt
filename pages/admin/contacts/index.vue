@@ -1,18 +1,28 @@
 <template>
   <div class="mx-auto max-w-6xl p-5">
     <h1 class="text-3xl font-semibold">Contacts</h1>
-    <div class="mt-7 flex items-center gap-5">
-      <button @click="exportContacts()" class="btn btn-outline">
-        <Icon size="18" name="solar:cloud-download-line-duotone" /> Export All
-      </button>
-      <button
-        @click="
-          contactModal = true;
-          contactRef.open({});
-        "
-        class="btn btn-primary">
-        Create New
-      </button>
+    <div class="mt-7 md:flex md:items-start md:justify-between">
+      <div>
+        <FormInput
+          type="search"
+          icon="ph:magnifying-glass"
+          name="search"
+          placeholder="Search"
+          v-model="search" />
+      </div>
+      <div class="flex items-center gap-5">
+        <button @click="exportContacts()" class="btn btn-outline">
+          <Icon size="18" name="solar:cloud-download-line-duotone" /> Export All
+        </button>
+        <button
+          @click="
+            contactModal = true;
+            contactRef.open({});
+          "
+          class="btn btn-primary">
+          Create New
+        </button>
+      </div>
     </div>
 
     <ContactModal ref="contactRef" @refresh="refreshContacts" v-model="contactModal" />
@@ -20,6 +30,7 @@
 
     <div class="mt-10">
       <DataTable
+        :search-value="search"
         theme-color="#22c55e"
         table-class-name="dt"
         :items="contacts"
@@ -97,6 +108,8 @@
   let contactModal = ref(false);
   // Ref for notes modal
   const notesRef = ref<InstanceType<typeof NotesModal>>();
+  // var used to hold search value
+  let search = ref("");
 
   const {
     data: contacts,

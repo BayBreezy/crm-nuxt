@@ -85,7 +85,10 @@ export const useAuth = () => {
    */
   const getMe = async () => {
     try {
-      const res = await $fetch<User | undefined>("/api/auth/me");
+      const res = await $fetch<User | undefined>("/api/auth/me", {
+        headers: useRequestHeaders(),
+        credentials: "include",
+      });
       if (res?.id) user.value = res;
       return res?.id ? res : undefined;
     } catch (error: any) {

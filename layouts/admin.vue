@@ -22,7 +22,6 @@
   const logout = async () => {
     const { logoutUser } = useAuth();
     await logoutUser();
-    await navigateTo("/", { replace: true });
-    useToast().success("Logged out successfully");
+    useRouter().replace("/");
   };
 </script>
