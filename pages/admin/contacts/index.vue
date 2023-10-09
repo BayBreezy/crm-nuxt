@@ -29,68 +29,70 @@
     <NotesModal ref="notesRef" />
 
     <div class="mt-10">
-      <DataTable
-        :search-value="search"
-        theme-color="#22c55e"
-        table-class-name="dt"
-        :items="contacts"
-        :loading="pending"
-        :headers="headers">
-        <!-- Template used to render contact name and email -->
-        <template #item-name="{ firstName, lastName, email }">
-          <div class="my-3">
-            <p class="text-sm font-semibold">{{ firstName }} {{ lastName }}</p>
-            <a class="text-primary" :href="`mailto:${email}`">{{ email }}</a>
-          </div>
-        </template>
-        <!-- Template used to render action buttons -->
-        <template #item-actions="item">
-          <div class="flex items-center gap-1">
-            <!-- Edit button -->
-            <button
-              @click="setEdit(item)"
-              class="btn-icon p-1.5"
-              v-tooltip="`Edit contact`"
-              type="button">
-              <Icon size="20" name="solar:pen-new-square-line-duotone" />
-            </button>
-            <!-- Add note button -->
-            <button
-              @click="notesRef?.open(item)"
-              class="btn-icon p-1.5"
-              v-tooltip="`Add note`"
-              type="button">
-              <Icon size="20" name="solar:notebook-line-duotone" />
-            </button>
-            <!-- Delete button -->
-            <VDropdown>
-              <button class="btn-icon p-1.5" v-tooltip="`Remove contact`" type="button">
-                <Icon size="20" name="solar:trash-bin-minimalistic-line-duotone" />
+      <ClientOnly>
+        <DataTable
+          :search-value="search"
+          theme-color="#22c55e"
+          table-class-name="dt"
+          :items="contacts"
+          :loading="pending"
+          :headers="headers">
+          <!-- Template used to render contact name and email -->
+          <template #item-name="{ firstName, lastName, email }">
+            <div class="my-3">
+              <p class="text-sm font-semibold">{{ firstName }} {{ lastName }}</p>
+              <a class="text-primary" :href="`mailto:${email}`">{{ email }}</a>
+            </div>
+          </template>
+          <!-- Template used to render action buttons -->
+          <template #item-actions="item">
+            <div class="flex items-center gap-1">
+              <!-- Edit button -->
+              <button
+                @click="setEdit(item)"
+                class="btn-icon p-1.5"
+                v-tooltip="`Edit contact`"
+                type="button">
+                <Icon size="20" name="solar:pen-new-square-line-duotone" />
               </button>
-              <template #popper="{ hide }">
-                <div class="p-5">
-                  <p class="mb-2 text-sm">Are you sure you want to delete?</p>
-                  <div class="mt-3 flex items-center gap-2">
-                    <button
-                      @click="
-                        deleteContact(item.id);
-                        hide();
-                      "
-                      class="rounded border px-2 py-1 font-semibold hover:text-primary">
-                      Yes
-                    </button>
-                    <button
-                      class="rounded border px-2 py-1 font-semibold hover:text-primary"
-                      @click="hide()">
-                      No
-                    </button>
+              <!-- Add note button -->
+              <button
+                @click="notesRef?.open(item)"
+                class="btn-icon p-1.5"
+                v-tooltip="`Add note`"
+                type="button">
+                <Icon size="20" name="solar:notebook-line-duotone" />
+              </button>
+              <!-- Delete button -->
+              <VDropdown>
+                <button class="btn-icon p-1.5" v-tooltip="`Remove contact`" type="button">
+                  <Icon size="20" name="solar:trash-bin-minimalistic-line-duotone" />
+                </button>
+                <template #popper="{ hide }">
+                  <div class="p-5">
+                    <p class="mb-2 text-sm">Are you sure you want to delete?</p>
+                    <div class="mt-3 flex items-center gap-2">
+                      <button
+                        @click="
+                          deleteContact(item.id);
+                          hide();
+                        "
+                        class="rounded border px-2 py-1 font-semibold hover:text-primary">
+                        Yes
+                      </button>
+                      <button
+                        class="rounded border px-2 py-1 font-semibold hover:text-primary"
+                        @click="hide()">
+                        No
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </template>
-            </VDropdown>
-          </div>
-        </template>
-      </DataTable>
+                </template>
+              </VDropdown>
+            </div>
+          </template>
+        </DataTable>
+      </ClientOnly>
     </div>
   </div>
 </template>

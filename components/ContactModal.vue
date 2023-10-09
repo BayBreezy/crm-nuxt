@@ -67,13 +67,13 @@
     (e: "refresh"): void;
   }>();
 
-  const open = (c: Contact) => {
-    setValues(c);
-  };
-
   const { handleSubmit, isSubmitting, setValues, resetForm } = useForm<Contact>({
     validationSchema: ContactSchema,
   });
+
+  const open = (c: Contact) => {
+    setValues(c);
+  };
 
   defineExpose({
     open,
@@ -96,7 +96,7 @@
           error: {
             autoClose: 12000,
             closeButton: true,
-            render(err: any) {              
+            render(err: any) {
               return useFormatError(err.data);
             },
           },

@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
   import { useField } from "vee-validate";
-  interface IInput extends Partial<HTMLTextAreaElement> {
+  interface IInput extends /* @vue-ignore */ Partial<HTMLTextAreaElement> {
     name: string;
     rules?: any;
     label?: string;

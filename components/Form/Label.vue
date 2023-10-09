@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-  interface ILabel extends Partial<HTMLLabelElement> {}
+  interface ILabel extends /* @vue-ignore */ Partial<HTMLLabelElement> {}
   defineProps<ILabel>();
 </script>
