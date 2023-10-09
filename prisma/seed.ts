@@ -21,20 +21,20 @@ const main = async () => {
   for (let i = 0; i < 100; i++) {
     await prisma.contact.create({
       data: {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
+        firstName: faker.person.firstName(),
+        lastName: faker.person.lastName(),
         email: faker.internet.email(),
         phone: faker.phone.number(),
         company: faker.company.name(),
         department: faker.commerce.department(),
-        position: faker.name.jobTitle(),
+        position: faker.person.jobTitle(),
         userId: user.id,
         notes: {
           create: {
             content: faker.lorem.paragraphs(4),
           },
         },
-        address: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}, ${faker.address.country()}`,
+        address: `${faker.location.streetAddress()}, ${faker.location.city()}, ${faker.location.state()}, ${faker.location.zipCode()}, ${faker.location.country()}`,
       },
     });
   }
