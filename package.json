@@ -11,40 +11,6 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "prettier": {
-    "printWidth": 100,
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "bracketSameLine": true,
-    "endOfLine": "lf",
-    "trailingComma": "es5",
-    "vueIndentScriptAndStyle": true,
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ],
-    "overrides": [
-      {
-        "files": "*.vue",
-        "options": {
-          "parser": "vue",
-          "printWidth": 100,
-          "tabWidth": 2,
-          "useTabs": false,
-          "semi": true,
-          "singleQuote": false,
-          "bracketSameLine": true,
-          "endOfLine": "lf",
-          "trailingComma": "es5",
-          "vueIndentScriptAndStyle": true,
-          "plugins": [
-            "prettier-plugin-tailwindcss"
-          ]
-        }
-      }
-    ]
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
