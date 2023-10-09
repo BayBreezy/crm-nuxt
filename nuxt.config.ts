@@ -6,6 +6,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  devtools: { enabled: true },
   typescript: { shim: false },
   css: [
     "vue3-easy-data-table/dist/style.css",
