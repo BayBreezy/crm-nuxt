@@ -71,7 +71,10 @@
   });
 
   const open = (c: Contact) => {
-    setValues(c);
+    // workaround used to set values after the modal is open
+    setTimeout(() => {
+      setValues(c);
+    }, 100);
   };
 
   defineExpose({
