@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     "@vueuse/nuxt",
     "@davestewart/nuxt-scrollbar",
+    "@vee-validate/nuxt",
   ],
 
   headlessui: {

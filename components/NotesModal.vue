@@ -87,7 +87,6 @@
   import dayjs from "dayjs";
   import { Contact, Notes } from "@prisma/client";
   import { VueFinalModal } from "vue-final-modal";
-  import { useForm } from "vee-validate";
 
   // open/close state of the modal
   const dialog = ref();

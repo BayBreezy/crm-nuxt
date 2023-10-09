@@ -55,7 +55,6 @@
 
 <script setup lang="ts">
   import { VueFinalModal } from "vue-final-modal";
-  import { useForm } from "vee-validate";
   import { Contact } from "@prisma/client";
 
   const props = defineProps<{
@@ -68,7 +67,7 @@
   }>();
 
   const { handleSubmit, isSubmitting, setValues, resetForm } = useForm<Contact>({
-    validationSchema: ContactSchema,
+    validationSchema: toTypedSchema(ContactSchema),
   });
 
   const open = (c: Contact) => {
