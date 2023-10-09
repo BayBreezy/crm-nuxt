@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@davestewart/nuxt-scrollbar": "^1.0.0",
-    "@formkit/auto-animate": "^1.0.0-beta.6",
+    "@formkit/auto-animate": "^1.0.0-pre-alpha.3",
     "@morev/vue-transitions": "^2.3.6",
     "@prisma/client": "^5.4.1",
     "@vee-validate/nuxt": "^4.11.8",
