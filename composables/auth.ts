@@ -1,5 +1,5 @@
-import { User } from "@prisma/client";
-import { TAuth } from "~/types";
+import type { User } from "@prisma/client";
+import type { TAuth } from "~/types";
 
 export const useUser = () => useState<User | undefined>("CRM_USER");
 export const useAuth = () => {

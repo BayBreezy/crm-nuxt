@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
   import { useForm } from "vee-validate";
-  import { TAuth } from "~/types";
+  import type { TAuth } from "~/types";
 
   const { handleSubmit, isSubmitting } = useForm<TAuth>({
     validationSchema: AuthSchema,
