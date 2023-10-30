@@ -48,7 +48,7 @@
     "sass": "^1.69.4",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
-    "vue": "^3.3.6"
+    "vue": "^3.3.7"
   },
   "dependencies": {
     "@davestewart/nuxt-scrollbar": "^1.0.0",
