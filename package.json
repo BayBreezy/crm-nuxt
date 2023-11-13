@@ -61,7 +61,7 @@
     "floating-vue": "^2.0.0-y.0",
     "fuse.js": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
-    "vue-final-modal": "^4.4.5",
+    "vue-final-modal": "^4.4.6",
     "vue-router": "^4.2.5",
     "vue3-easy-data-table": "^1.5.47",
     "vue3-toastify": "^0.1.14",
