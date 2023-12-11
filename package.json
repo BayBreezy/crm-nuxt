@@ -37,7 +37,7 @@
     "autoprefixer": "^10.4.16",
     "nuxt": "^3.8.1",
     "nuxt-headlessui": "^1.1.4",
-    "nuxt-icon": "^0.6.5",
+    "nuxt-icon": "^0.6.7",
     "nuxt-typed-router": "^3.3.3",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
