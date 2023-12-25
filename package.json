@@ -52,7 +52,7 @@
     "@davestewart/nuxt-scrollbar": "^1.0.0",
     "@formkit/auto-animate": "^0.8.1",
     "@morev/vue-transitions": "^2.3.6",
-    "@prisma/client": "^5.5.2",
+    "@prisma/client": "^5.7.1",
     "@vee-validate/nuxt": "^4.11.8",
     "@vee-validate/yup": "^4.11.8",
     "bcrypt": "^5.1.1",
