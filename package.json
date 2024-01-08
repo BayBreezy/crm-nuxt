@@ -40,7 +40,7 @@
     "nuxt-headlessui": "^1.1.5",
     "nuxt-icon": "^0.6.8",
     "nuxt-typed-router": "^3.5.0",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10",
     "prisma": "^5.7.1",
