@@ -36,7 +36,7 @@
     "@vueuse/core": "^10.7.1",
     "@vueuse/nuxt": "^10.7.1",
     "autoprefixer": "^10.4.16",
-    "nuxt": "^3.9.0",
+    "nuxt": "^3.9.1",
     "nuxt-headlessui": "^1.1.5",
     "nuxt-icon": "^0.6.8",
     "nuxt-typed-router": "^3.5.0",
