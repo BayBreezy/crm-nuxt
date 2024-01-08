@@ -42,7 +42,7 @@
     "nuxt-typed-router": "^3.5.0",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.10",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "prisma": "^5.7.1",
     "sass": "^1.69.6",
     "tailwindcss": "^3.4.0",
